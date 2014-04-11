@@ -10,9 +10,9 @@
     {
         readonly IDictionary<TagBuilder, IRenderToHtml> renderSet;
 
-        public DefaultTransformWebContent(IDictionary<TagBuilder, IRenderToHtml> renderSet)
+        public DefaultTransformWebContent(IDictionary<TagBuilder, IRenderToHtml> renderSet = null)
         {
-            this.renderSet = renderSet;
+            this.renderSet = renderSet ?? DefaultTagSetFactory.Create();
         }
 
         public bool CanTransform(Uri url)

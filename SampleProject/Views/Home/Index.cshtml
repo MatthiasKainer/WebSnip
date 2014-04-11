@@ -1,12 +1,27 @@
-﻿@@{
-    ViewBag.Title = "title";
+﻿@{
+    ViewBag.Title = "Sample.Web";
     Layout = "_Layout";
 }
 
 <h2>title</h2>
-
-@using (Ajax.BeginForm("LoadUrl", new AjaxOptions { UpdateTargetId = "snippet-placeholder" }))
-{
-  <input type="text" value="" name="url"/> <input type="submit"/>
-}
-<div id="snippet-placeholder"></div>
+<div>
+    @using (Ajax.BeginForm("LoadUrl", new AjaxOptions { UpdateTargetId = "default-snippet-placeholder" }))
+    {
+        <input type="text" value="" name="url"/> <input type="submit" value="Load Url using default"/>
+    }
+    <div id="default-snippet-placeholder"></div>
+</div>
+<div>
+     @using (Ajax.BeginForm("LoadAmazonUrl", new AjaxOptions { UpdateTargetId = "amazon-snippet-placeholder" }))
+    {
+        <input type="submit" value="Load Amazon Article using predefined TagSetFactory"/>
+    }
+    <div id="amazon-snippet-placeholder"></div>
+</div>
+<div>
+     @using (Ajax.BeginForm("LoadTwitterUrl", new AjaxOptions { UpdateTargetId = "twitter-snippet-placeholder" }))
+    {
+        <input type="submit" value="Load Twitter using custom rendering"/>
+    }
+    <div id="twitter-snippet-placeholder"></div>
+</div>

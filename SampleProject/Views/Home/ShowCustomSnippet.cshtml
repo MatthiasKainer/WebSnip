@@ -1,0 +1,8 @@
+﻿@model WebSnip.WebSnippet
+
+<div style="padding-top: 60px; color: white; text-align: center;background-repeat: no-repeat; background-position: center; margin:0 auto; height: 295px; width: 590px; background-image: @Model.GetRenderedPartByName("background")">
+    @Html.Raw(Model.GetRenderedPartByName("image"))
+    <h1>@Model.GetRenderedPartByName("name")</h1>
+    <h2>@Model.GetRenderedPartByName("user")</h2>
+    <p>@Model.GetRenderedPartByName("bio")</p>
+</div>

@@ -5,6 +5,7 @@
 
     public abstract class BaseRenderer : IRenderToHtml
     {
+        string name;
         protected HtmlDocument Html { get; private set; }
         protected Uri CurrentUrl { get; private set; }
 
@@ -14,6 +15,8 @@
         {
             get
             {
+                if (!string.IsNullOrWhiteSpace(name)) return name;
+
                 if (Has("name")) return Get("name");
 
                 if (Has("id")) return Get("id");
@@ -34,6 +37,12 @@
             return this;
         }
         
+        public BaseRenderer WithName(string name)
+        {
+            this.name = name;
+            return this;
+        }
+
         public abstract string Render();
 
         private bool Has(string name)

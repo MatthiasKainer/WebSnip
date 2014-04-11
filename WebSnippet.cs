@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Render;
     using Templating;
 
@@ -22,12 +23,14 @@
 
         public WebSnippet(ICanDoTemplatingForWebSnippets template)
         {
+            if (template == null) throw new ArgumentNullException("template");
             registedRenderers = new List<IRenderToHtml>();
             Template = template;
         }
 
         public WebSnippet WithTemplate(ICanDoTemplatingForWebSnippets template)
         {
+            if (template == null) throw new ArgumentNullException("template");
             Template = template;
             return this;
         }
@@ -48,6 +51,13 @@
         public string ToHtml()
         {
             return Template.ApplyToTemplate(registedRenderers.ToArray()).ToHtml();
+        }
+
+        public string GetRenderedPartByName(string name)
+        {
+            if (name == null) throw new ArgumentNullException("name");
+            var renderer = registedRenderers.FirstOrDefault(_ => _.Name == name);
+            return renderer == null ? null : renderer.Render();
         }
     }
 }
