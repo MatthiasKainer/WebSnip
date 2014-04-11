@@ -66,6 +66,8 @@
     <Compile Include="Transform\ITransformWebContentForUrl.cs" />
     <Compile Include="Transform\ITransformWebContentToWebSnippets.cs" />
     <Compile Include="Transform\TransformWebContentToWebSnippets.cs" />
+    <Compile Include="Utils\SyntaticSugar\Switch\Switch.cs" />
+    <Compile Include="Utils\SyntaticSugar\Switch\SwitchExtensions.cs" />
     <Compile Include="WebSnippet.cs" />
   </ItemGroup>
   <ItemGroup>
