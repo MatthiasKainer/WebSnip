@@ -25,7 +25,7 @@ namespace SampleProject.Controllers
             if (!Uri.TryCreate(url, UriKind.Absolute, out uri))
             {
                 ModelState.AddModelError("", "Invalid url");
-                PartialView("ShowSnippet", new WebSnippet());
+                PartialView("ShowSnippet", new WebSnippet(uri));
             }
 
             return PartialView("ShowSnippet", snipMaker.GetSnippetFor(uri));
