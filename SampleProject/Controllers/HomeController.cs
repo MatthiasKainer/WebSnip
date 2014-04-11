@@ -48,11 +48,11 @@ namespace SampleProject.Controllers
         ITransformWebContentForUrl CreateForTwitter()
         {
             var tagSet = new Dictionary<TagBuilder, IRenderToHtml>();
-            tagSet.Add(new TagBuilder("img").WithCssClass("avatar size73"), new ImageRenderer().WithName("image"));
-            tagSet.Add(new TagBuilder("h1").WithCssClass("fullname"), new TextRenderer().WithName("name"));
-            tagSet.Add(new TagBuilder("h2").WithCssClass("username"), new TextRenderer().WithName("user"));
-            tagSet.Add(new TagBuilder("div").WithCssClass("bio-container"), new TextRenderer().WithName("bio"));
-            tagSet.Add(new TagBuilder("div").WithCssClass("profile-header-inner"), new AttributeRenderer("data-background-image").WithName("background"));
+            tagSet.Add(new TagBuilder("img").WithCssClass("ProfileAvatar-image"), new ImageRenderer().WithName("image"));
+            tagSet.Add(new TagBuilder("h1").WithCssClass("ProfileHeaderCard-name"), new TextRenderer().WithName("name"));
+            tagSet.Add(new TagBuilder("h2").WithCssClass("ProfileHeaderCard-screenname"), new TextRenderer().WithName("user"));
+            tagSet.Add(new TagBuilder("p").WithCssClass("ProfileHeaderCard-bio"), new TextRenderer().WithName("bio"));
+            tagSet.Add(new TagBuilder("div").WithCssClass("ProfileCanopy-header"), new AttributeRenderer("style").WithName("background"));
             return new DefaultTransformWebContent(tagSet);
         }
     }
