@@ -1,7 +1,6 @@
 ﻿namespace WebSnip.Render
 {
     using System;
-    using HtmlAgilityPack;
 
     public class ImageRenderer : BaseRenderer
     {
