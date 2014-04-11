@@ -10,21 +10,24 @@
     {
         readonly List<IRenderToHtml> registedRenderers;
 
+        public Uri ForUrl { get; set; }
+
         protected ICanDoTemplatingForWebSnippets Template { get; private set; }
 
         public int CurrentRenderers { get { return registedRenderers.Count;  } }
 
         public string FullContent { get; private set; }
-
-        public WebSnippet()
-            : this(new EmptyTemplate())
+        
+        public WebSnippet(Uri forUrl)
+            : this(forUrl, new EmptyTemplate())
         {
         }
 
-        public WebSnippet(ICanDoTemplatingForWebSnippets template)
+        public WebSnippet(Uri forUrl, ICanDoTemplatingForWebSnippets template)
         {
             if (template == null) throw new ArgumentNullException("template");
             registedRenderers = new List<IRenderToHtml>();
+            ForUrl = forUrl;
             Template = template;
         }
 

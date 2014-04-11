@@ -23,7 +23,7 @@
         public WebSnippet Transform(Uri forUrl, string webContent)
         {
             if (string.IsNullOrWhiteSpace(webContent)) throw new ArgumentNullException("webContent");
-            var webSnippet = new WebSnippet().WithFullContent(webContent);
+            var webSnippet = new WebSnippet(forUrl).WithFullContent(webContent);
 
             return renderSet.Where(renderItem => webContent.HasTag(renderItem.Key))
                 .Aggregate(webSnippet, (current, tagSet) => current.AddRenderer(renderSet[tagSet.Key].WithContent(forUrl, webContent.GetFullTag(tagSet.Key))));
