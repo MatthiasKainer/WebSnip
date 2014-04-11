@@ -3,6 +3,10 @@ WebSnip
 
 A small library that allows to load parts of websites to display a preview of it. Like Facebook's preview in the chat, but not as sophisticated I guess.
 
+## Install
+
+    PM> Install-Package WebSnip
+
 ## Quickstart
 
     public string GetContent(Uri uri) {
