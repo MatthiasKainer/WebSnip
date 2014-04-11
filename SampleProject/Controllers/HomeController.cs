@@ -19,8 +19,7 @@ namespace SampleProject.Controllers
 
         public ActionResult LoadUrl(string url)
         {
-            var snipMaker = new SnipMaker(new WebSnippetRequest(),
-                new TransformWebContentToWebSnippets());
+            var snipMaker = new SnipMaker();
             Uri uri;
             if (!Uri.TryCreate(url, UriKind.Absolute, out uri))
             {
@@ -34,7 +33,7 @@ namespace SampleProject.Controllers
         public ActionResult LoadAmazonUrl()
         {
             var uri = new Uri("http://www.amazon.de/Salutoo-Skin-f%C3%BCr-Iphone-Metal/dp/B00APJA9UC/");
-            var snipMaker = new SnipMaker(new WebSnippetRequest(),
+            var snipMaker = new SnipMaker(transformWebSnippet:
                 new TransformWebContentToWebSnippets(new DefaultTransformWebContent(DefaultTagSetFactory.CreateForAmazon())));
             return PartialView("ShowSnippet", snipMaker.GetSnippetFor(uri));
         }
@@ -42,7 +41,7 @@ namespace SampleProject.Controllers
         public ActionResult LoadTwitterUrl()
         {
             var uri = new Uri("https://twitter.com/MatKainer/");
-            var snipMaker = new SnipMaker(new WebSnippetRequest(), new TransformWebContentToWebSnippets(CreateForTwitter()));
+            var snipMaker = new SnipMaker(transformWebSnippet: new TransformWebContentToWebSnippets(CreateForTwitter()));
             return PartialView("ShowCustomSnippet", snipMaker.GetSnippetFor(uri));
         }
 
