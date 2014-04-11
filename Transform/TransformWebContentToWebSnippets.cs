@@ -26,7 +26,7 @@ namespace WebSnip.Transform
             if ((transformer = customTransformers.FirstOrDefault(_ => _.CanTransform(forUrl))) == null)
                 transformer = defaultTransformer;
 
-            return transformer.Transform(webContent);
+            return transformer.Transform(forUrl, webContent);
         }
     }
 }

@@ -1,13 +1,17 @@
 ﻿namespace WebSnip.Transform
 {
     using System.Collections.Generic;
+    using HtmlUtils;
     using Render;
 
     public static class DefaultTagSetFactory
     {
-        public static Dictionary<string, IRenderToHtml> Create()
+        public static Dictionary<TagBuilder, IRenderToHtml> CreateForAmazon()
         {
-            return new Dictionary<string, IRenderToHtml>();
+            var dict = new Dictionary<TagBuilder, IRenderToHtml>();
+            dict.Add(new TagBuilder("h1"), new TextRenderer());
+            dict.Add(new TagBuilder("img").WithCssClass("thumb0"), new ImageRenderer());
+            return dict;
         }
     }
 }

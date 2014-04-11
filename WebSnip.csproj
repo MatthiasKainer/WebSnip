@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HtmlUtils\Html.cs" />
+    <Compile Include="HtmlUtils\TagBuilder.cs" />
     <Compile Include="IRequestWebSnippets.cs" />
     <Compile Include="NoBaseUrlProvidedButRelativeUrlRequestedException.cs" />
     <Compile Include="Render\BaseRenderer.cs" />

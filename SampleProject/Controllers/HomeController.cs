@@ -14,7 +14,7 @@ namespace SampleProject.Controllers
         public HomeController()
         {
             snipMaker = new SnipMaker(new WebSnippetRequest(), 
-                new TransformWebContentToWebSnippets(new DefaultTransformWebContent(DefaultTagSetFactory.Create())));
+                new TransformWebContentToWebSnippets(new DefaultTransformWebContent(DefaultTagSetFactory.CreateForAmazon())));
         }
 
         public ActionResult Index()
