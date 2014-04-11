@@ -1,0 +1,12 @@
+﻿@@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+
+@using (Ajax.BeginForm("LoadUrl", new AjaxOptions { UpdateTargetId = "snippet-placeholder" }))
+{
+  <input type="text" value="" name="url"/> <input type="submit"/>
+}
+<div id="snippet-placeholder"></div>

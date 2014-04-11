@@ -10,8 +10,8 @@ namespace WebSnip.Transform
         readonly ITransformWebContentForUrl defaultTransformer;
 
         public TransformWebContentToWebSnippets(
-            IEnumerable<ITransformWebContentForUrl> customTransformers,
-            ITransformWebContentForUrl defaultTransformer)
+            ITransformWebContentForUrl defaultTransformer,
+            IEnumerable<ITransformWebContentForUrl> customTransformers = null)
         {
             this.customTransformers = customTransformers ?? new List<ITransformWebContentForUrl>();
             this.defaultTransformer = defaultTransformer;

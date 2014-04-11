@@ -45,6 +45,7 @@
     <Compile Include="HtmlUtils\Html.cs" />
     <Compile Include="IRequestWebSnippets.cs" />
     <Compile Include="NoBaseUrlProvidedButRelativeUrlRequestedException.cs" />
+    <Compile Include="Render\BaseRenderer.cs" />
     <Compile Include="Render\ImageRenderer.cs" />
     <Compile Include="Render\TextRenderer.cs" />
     <Compile Include="Render\IRenderToHtml.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Templating\DefaultTemplate.cs" />
     <Compile Include="Templating\EmptyTemplate.cs" />
     <Compile Include="Templating\ICanDoTemplatingForWebSnippets.cs" />
+    <Compile Include="Templating\NamedTemplate.cs" />
     <Compile Include="Transform\DefaultTagSetFactory.cs" />
     <Compile Include="Transform\DefaultTransformWebContent.cs" />
     <Compile Include="Transform\ITransformWebContentForUrl.cs" />
