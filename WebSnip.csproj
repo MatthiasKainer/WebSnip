@@ -52,6 +52,7 @@
     <Compile Include="Render\BaseRenderer.cs" />
     <Compile Include="Render\HtmlRenderer.cs" />
     <Compile Include="Render\Image.cs" />
+    <Compile Include="Render\Render.cs" />
     <Compile Include="Render\TagRenderer.cs" />
     <Compile Include="Render\Text.cs" />
     <Compile Include="Render\IRenderToHtml.cs" />

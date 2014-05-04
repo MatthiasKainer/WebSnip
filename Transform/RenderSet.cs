@@ -6,6 +6,5 @@ namespace WebSnip.Transform
 
     public class RenderSet : Dictionary<TagBuilder, IRenderToHtml>
     {
-        
     }
 }
