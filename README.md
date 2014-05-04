@@ -43,17 +43,17 @@ A SnipMaker for Amazon would look something like this:
                 new TransformBuilder().Using(TagSetFactoryFor<Amazon>.Get()).Build());
     snipMaker.GetSnippetFor(uri);
     
-### DefaultTransformWebContent
+### TransformBuilder
 
 The default implementation for ITransformWebContentForUrl is very flexible, and can be used in a lot of scenarios. By adding "RenderSets" to it, you can specify how the result should be rendered. Let's look at a example. 
 
 We want to get a snippet with the fullname and the username from a twitterpage:
 
-    var tagSet = new Dictionary<TagBuilder, IRenderToHtml>
+    var tagSet = new RenderSet
         {
             {new TagBuilder("h1").WithCssClass("ProfileHeaderCard-name"), Render.A<Text>().WithName("name")},
             {new TagBuilder("img").WithCssClass("ProfileAvatar-image"), Render.A<Image>().WithName("image")}
         };
-    return tagSet;
+    return new TransformBuilder().Using(tagSet).Build();
     
 First we create two entries in a Dictionary. The Key is the tag that we search for on the page. We want the h1 and img tag, and find them by css class. As renderer we use the TextRenderer - it takes the InnerText of an element and image renderer - it, well, takes the image. 
