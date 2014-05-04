@@ -34,18 +34,18 @@ namespace SampleProject.Controllers
         {
             var uri = new Uri("http://www.amazon.de/Salutoo-Skin-f%C3%BCr-Iphone-Metal/dp/B00APJA9UC/");
             var snipMaker = new SnipMaker(transformWebSnippet:
-                new TransformWebContentToWebSnippets(new DefaultTransformWebContent(TagSetFactoryFor<Amazon>.Get())));
+                new TransformBuilder().Using(TagSetFactoryFor<Amazon>.Get()).Build());
             return PartialView("ShowSnippet", snipMaker.GetSnippetFor(uri));
         }
 
         public ActionResult LoadTwitterUrl()
         {
             var uri = new Uri("https://twitter.com/MatKainer/");
-            var snipMaker = new SnipMaker(transformWebSnippet: new TransformWebContentToWebSnippets(CreateForTwitter()));
+            var snipMaker = new SnipMaker(transformWebSnippet: new TransformBuilder().Using(CreateForTwitter()).Build());
             return PartialView("ShowCustomSnippet", snipMaker.GetSnippetFor(uri));
         }
 
-        ITransformWebContentForUrl CreateForTwitter()
+        RenderSet CreateForTwitter()
         {
             var tagSet = new RenderSet();
             tagSet.Add(new TagBuilder("img").WithCssClass("ProfileAvatar-image"), new Image().WithName("image"));
@@ -53,7 +53,7 @@ namespace SampleProject.Controllers
             tagSet.Add(new TagBuilder("h2").WithCssClass("ProfileHeaderCard-screenname"), new Text().WithName("user"));
             tagSet.Add(new TagBuilder("p").WithCssClass("ProfileHeaderCard-bio"), new Text().WithName("bio"));
             tagSet.Add(new TagBuilder("div").WithCssClass("ProfileCanopy-header"), new Attribute("style").WithName("background"));
-            return new DefaultTransformWebContent(tagSet);
+            return tagSet;
         }
     }
 }

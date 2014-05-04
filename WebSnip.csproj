@@ -68,6 +68,7 @@
     <Compile Include="Transform\RenderSet.cs" />
     <Compile Include="Transform\TagSetFactoryFor.cs" />
     <Compile Include="Transform\TransformWebContentToWebSnippets.cs" />
+    <Compile Include="Transform\TransformBuilder.cs" />
     <Compile Include="Transform\Websites\Amazon.cs" />
     <Compile Include="Transform\Websites\DefaultWebsite.cs" />
     <Compile Include="Transform\Websites\IAmAWebsite.cs" />

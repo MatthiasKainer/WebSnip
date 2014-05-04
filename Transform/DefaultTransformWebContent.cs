@@ -7,33 +7,6 @@
     using Render;
     using Websites;
 
-    public class TransformWebSnippet
-    {
-        ITransformWebContentForUrl transformWebContentForUrl;
-        IDictionary<TagBuilder, IRenderToHtml> renderSetFor;
-
-        public TransformWebSnippet Using(ITransformWebContentForUrl transformWebContent)
-        {
-            transformWebContentForUrl = transformWebContent;
-            return this;
-            //return new TransformWebContentToWebSnippets(new DefaultTransformWebContent(TagSetFactoryFor<Amazon>.Get())))
-        }
-
-        public TransformWebSnippet Using(IDictionary<TagBuilder, IRenderToHtml> renderSet)
-        {
-            renderSetFor = renderSet;
-            return this;
-            //return new TransformWebContentToWebSnippets(new DefaultTransformWebContent(TagSetFactoryFor<Amazon>.Get())))
-        }
-
-        public ITransformWebContentToWebSnippets Create()
-        {
-            if (transformWebContentForUrl == null) transformWebContentForUrl = new DefaultTransformWebContent();
-            
-            return new TransformWebContentToWebSnippets(transformWebContentForUrl);
-        }
-    }
-
     public class DefaultTransformWebContent : ITransformWebContentForUrl
     {
         RenderSet renderSet;
@@ -60,7 +33,7 @@
             var webSnippet = new WebSnippet(forUrl).WithFullContent(webContent);
 
             return renderSet.Where(renderItem => webContent.HasTag(renderItem.Key))
-                .Aggregate(webSnippet, (current, tagSet) => current.AddRenderer(renderSet[tagSet.Key].WithContent(forUrl, webContent.GetFullTag(tagSet.Key))));
+                .Aggregate(webSnippet, (current, renderItem) => current.AddRenderer(renderSet[renderItem.Key].WithContent(forUrl, webContent.GetFullTag(renderItem.Key))));
         }
     }
 }
