@@ -37,10 +37,10 @@ You will never get to see the Renderers or Template, so this is more an fyi. In 
 The *creation* of the WebSnippet is done using the _SnipMaker_. The SnipMaker can take a _IRequestWebSnippets_ and a _ITransformWebContentToWebSnippets_. The first is processing the request and loads the content as string. It can be overridden to add stuff like authentication to the request. The latter is transforming the output from the first to a WebSnippet. 
 To apply all of this, call _GetSnippetFor(uri)_ and you will receive a WebSnippet for the provided Uri. 
 
-Typically your SnipMaker would look something like this: 
+A SnipMaker for Amazon would look something like this: 
 
     var snipMaker = new SnipMaker(new WebSnippetRequest(),
-                new TransformWebContentToWebSnippets());
+                new TransformBuilder().Using(TagSetFactoryFor<Amazon>.Get()).Build());
     snipMaker.GetSnippetFor(uri);
     
 ### DefaultTransformWebContent
@@ -51,13 +51,9 @@ We want to get a snippet with the fullname and the username from a twitterpage:
 
     var tagSet = new Dictionary<TagBuilder, IRenderToHtml>
         {
-            {new TagBuilder("h1").WithCssClass("fullname"), new TextRenderer()},
-            {new TagBuilder("h2").WithCssClass("username"), new TextRenderer()}
+            {new TagBuilder("h1").WithCssClass("ProfileHeaderCard-name"), Render.A<Text>().WithName("name")},
+            {new TagBuilder("img").WithCssClass("ProfileAvatar-image"), Render.A<Image>().WithName("image")}
         };
-    return new DefaultTransformWebContent(tagSet);
+    return tagSet;
     
-First we create two entries in a Dictionary. The Key is the tag that we search for on the page. We want the h1 and h2 tag, and find them by css class. As renderer we use the TextRenderer - it takes the InnerText of an element. 
-
-Then we create our DefaultTransformWebContent passing the tagSet to it. 
-
-In the _DefaultTagSetFactory_ you can find prefined tagsets, like "CreateForAmazon" which will return a WebSnippet for an Amazon Product Detail Page.
+First we create two entries in a Dictionary. The Key is the tag that we search for on the page. We want the h1 and img tag, and find them by css class. As renderer we use the TextRenderer - it takes the InnerText of an element and image renderer - it, well, takes the image. 
