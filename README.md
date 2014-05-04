@@ -57,3 +57,17 @@ We want to get a snippet with the fullname and the username from a twitterpage:
     return new TransformBuilder().Using(tagSet).Build();
     
 First we create two entries in a Dictionary. The Key is the tag that we search for on the page. We want the h1 and img tag, and find them by css class. As renderer we use the TextRenderer - it takes the InnerText of an element and image renderer - it, well, takes the image. 
+
+### Showing it on the page
+
+There are two ways to display the output on the page. The first is very intuitiv: 
+
+    @model WebSnip.WebSnippet
+    @Html.Raw(Model.ToHtml())
+    
+But this cannot be customized. To have more control you can request the fields for the item: 
+
+    @model WebSnip.WebSnippet
+    <h1>@Model.GetRenderedPartByName("name")</h1>
+    <img src="@Model.GetRenderedPartByName("image")" alt="@Model.GetRenderedPartByName("name")" />
+    
