@@ -48,11 +48,11 @@ namespace SampleProject.Controllers
         RenderSet CreateForTwitter()
         {
             var tagSet = new RenderSet();
-            tagSet.Add(new TagBuilder("img").WithCssClass("ProfileAvatar-image"), new Image().WithName("image"));
-            tagSet.Add(new TagBuilder("h1").WithCssClass("ProfileHeaderCard-name"), new Text().WithName("name"));
-            tagSet.Add(new TagBuilder("h2").WithCssClass("ProfileHeaderCard-screenname"), new Text().WithName("user"));
-            tagSet.Add(new TagBuilder("p").WithCssClass("ProfileHeaderCard-bio"), new Text().WithName("bio"));
-            tagSet.Add(new TagBuilder("div").WithCssClass("ProfileCanopy-header"), new Attribute("style").WithName("background"));
+            tagSet.Add(new TagBuilder("img").WithCssClass("ProfileAvatar-image"), Render.A<Image>().WithName("image"));
+            tagSet.Add(new TagBuilder("h1").WithCssClass("ProfileHeaderCard-name"), Render.A<Text>().WithName("name"));
+            tagSet.Add(new TagBuilder("h2").WithCssClass("ProfileHeaderCard-screenname"), Render.A<Text>().WithName("user"));
+            tagSet.Add(new TagBuilder("p").WithCssClass("ProfileHeaderCard-bio"), Render.A<Text>().WithName("bio"));
+            tagSet.Add(new TagBuilder("div").WithCssClass("ProfileCanopy-header"), Render.A<Attribute>("style").WithName("background"));
             return tagSet;
         }
     }
