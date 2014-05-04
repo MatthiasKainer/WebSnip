@@ -9,6 +9,7 @@ namespace SampleProject.Controllers
     using WebSnip.Render;
     using WebSnip.Request;
     using WebSnip.Transform;
+    using Attribute = WebSnip.Render.Attribute;
 
     public class HomeController : Controller
     {
@@ -34,7 +35,7 @@ namespace SampleProject.Controllers
         {
             var uri = new Uri("http://www.amazon.de/Salutoo-Skin-f%C3%BCr-Iphone-Metal/dp/B00APJA9UC/");
             var snipMaker = new SnipMaker(transformWebSnippet:
-                new TransformWebContentToWebSnippets(new DefaultTransformWebContent(DefaultTagSetFactory.CreateForAmazon())));
+                new TransformWebContentToWebSnippets(new DefaultTransformWebContent(TagSetFactoryFor<Amazon>.Get())));
             return PartialView("ShowSnippet", snipMaker.GetSnippetFor(uri));
         }
 
@@ -48,11 +49,11 @@ namespace SampleProject.Controllers
         ITransformWebContentForUrl CreateForTwitter()
         {
             var tagSet = new Dictionary<TagBuilder, IRenderToHtml>();
-            tagSet.Add(new TagBuilder("img").WithCssClass("ProfileAvatar-image"), new ImageRenderer().WithName("image"));
-            tagSet.Add(new TagBuilder("h1").WithCssClass("ProfileHeaderCard-name"), new TextRenderer().WithName("name"));
-            tagSet.Add(new TagBuilder("h2").WithCssClass("ProfileHeaderCard-screenname"), new TextRenderer().WithName("user"));
-            tagSet.Add(new TagBuilder("p").WithCssClass("ProfileHeaderCard-bio"), new TextRenderer().WithName("bio"));
-            tagSet.Add(new TagBuilder("div").WithCssClass("ProfileCanopy-header"), new AttributeRenderer("style").WithName("background"));
+            tagSet.Add(new TagBuilder("img").WithCssClass("ProfileAvatar-image"), new Image().WithName("image"));
+            tagSet.Add(new TagBuilder("h1").WithCssClass("ProfileHeaderCard-name"), new Text().WithName("name"));
+            tagSet.Add(new TagBuilder("h2").WithCssClass("ProfileHeaderCard-screenname"), new Text().WithName("user"));
+            tagSet.Add(new TagBuilder("p").WithCssClass("ProfileHeaderCard-bio"), new Text().WithName("bio"));
+            tagSet.Add(new TagBuilder("div").WithCssClass("ProfileCanopy-header"), new Attribute("style").WithName("background"));
             return new DefaultTransformWebContent(tagSet);
         }
     }

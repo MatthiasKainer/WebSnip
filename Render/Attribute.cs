@@ -2,11 +2,11 @@
 {
     using System;
 
-    public class AttributeRenderer : BaseRenderer
+    public class Attribute : BaseRenderer
     {
         readonly string attribute;
 
-        public AttributeRenderer(string attribute)
+        public Attribute(string attribute)
         {
             if (attribute == null) throw new ArgumentNullException("attribute");
             this.attribute = attribute;

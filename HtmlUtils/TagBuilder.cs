@@ -11,6 +11,11 @@
         protected Dictionary<string, string> Attributes { get; private set; }
         protected string CssClass { get; private set; }
 
+        public static TagBuilder Create(string tagName)
+        {
+            return new TagBuilder(tagName);
+        }
+
         public TagBuilder(string tagName)
         {
             if (string.IsNullOrWhiteSpace(tagName)) throw new ArgumentNullException("tag");

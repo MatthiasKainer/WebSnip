@@ -12,7 +12,7 @@
 
         public DefaultTransformWebContent(IDictionary<TagBuilder, IRenderToHtml> renderSet = null)
         {
-            this.renderSet = renderSet ?? DefaultTagSetFactory.Create();
+            this.renderSet = renderSet ?? TagSetFactoryFor<DefaultWebsite>.Get();
         }
 
         public bool CanTransform(Uri url)

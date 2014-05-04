@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class ImageRenderer : BaseRenderer
+    public class Image : BaseRenderer
     {
         public override string Render()
         {
