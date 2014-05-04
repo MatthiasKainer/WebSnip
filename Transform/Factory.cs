@@ -5,8 +5,9 @@
     using HtmlUtils;
     using Render;
     using Utils.SyntaticSugar.Switch;
+    using Websites;
 
-    public static class DefaultTagSetFactory
+    public static class Factory
     {
         public static Dictionary<TagBuilder, IRenderToHtml> CreateFor(Uri uri)
         {

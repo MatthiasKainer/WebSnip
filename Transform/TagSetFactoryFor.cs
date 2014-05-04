@@ -1,13 +1,11 @@
 ﻿namespace WebSnip.Transform
 {
     using System;
-    using System.Collections.Generic;
-    using HtmlUtils;
-    using Render;
+    using Websites;
 
     public static class TagSetFactoryFor<TWebSite> where TWebSite : IAmAWebsite
     {
-        public static Dictionary<TagBuilder, IRenderToHtml> Get()
+        public static RenderSet Get()
         {
             var type = typeof (TWebSite);
             var webSiteConstructor = type.GetConstructor(Type.EmptyTypes);

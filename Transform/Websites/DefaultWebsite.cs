@@ -1,14 +1,13 @@
-﻿namespace WebSnip.Transform
+namespace WebSnip.Transform.Websites
 {
-    using System.Collections.Generic;
     using HtmlUtils;
     using Render;
 
     public class DefaultWebsite : IAmAWebsite
     {
-        public Dictionary<TagBuilder, IRenderToHtml> Get()
+        public RenderSet Get()
         {
-            var dict = new Dictionary<TagBuilder, IRenderToHtml>
+            var dict = new RenderSet
                 {
                     {TagBuilder.Create("title"), Render.A<Text>()},
                     {TagBuilder.Create("img"), Render.A<Image>()},

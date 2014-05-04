@@ -1,14 +1,13 @@
-﻿namespace WebSnip.Transform
+namespace WebSnip.Transform.Websites
 {
-    using System.Collections.Generic;
     using HtmlUtils;
     using Render;
 
     public class Amazon : IAmAWebsite
     {
-        public Dictionary<TagBuilder, IRenderToHtml> Get()
+        public RenderSet Get()
         {
-            var dict = new Dictionary<TagBuilder, IRenderToHtml>
+            var dict = new RenderSet
                 {
                     {new TagBuilder("h1"), new TagRenderer()},
                     {new TagBuilder("div").WithId("productDescription"), new HtmlRenderer()}

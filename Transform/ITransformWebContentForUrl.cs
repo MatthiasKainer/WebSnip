@@ -6,6 +6,8 @@ namespace WebSnip.Transform
     {
         bool CanTransform(Uri url);
 
+        ITransformWebContentForUrl With(RenderSet set);
+
         WebSnippet Transform(Uri forUrl, string webContent);
     }
 }

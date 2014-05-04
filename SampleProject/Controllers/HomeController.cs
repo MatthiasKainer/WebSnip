@@ -3,12 +3,11 @@
 namespace SampleProject.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using WebSnip;
     using WebSnip.HtmlUtils;
     using WebSnip.Render;
-    using WebSnip.Request;
     using WebSnip.Transform;
+    using WebSnip.Transform.Websites;
     using Attribute = WebSnip.Render.Attribute;
 
     public class HomeController : Controller
@@ -48,7 +47,7 @@ namespace SampleProject.Controllers
 
         ITransformWebContentForUrl CreateForTwitter()
         {
-            var tagSet = new Dictionary<TagBuilder, IRenderToHtml>();
+            var tagSet = new RenderSet();
             tagSet.Add(new TagBuilder("img").WithCssClass("ProfileAvatar-image"), new Image().WithName("image"));
             tagSet.Add(new TagBuilder("h1").WithCssClass("ProfileHeaderCard-name"), new Text().WithName("name"));
             tagSet.Add(new TagBuilder("h2").WithCssClass("ProfileHeaderCard-screenname"), new Text().WithName("user"));
