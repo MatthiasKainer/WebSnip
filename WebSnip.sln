@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSnip", "WebSnip.csproj", "{47C8995A-3D9D-4F07-A66B-FDD021727639}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSnip.Tests", "..\WebSnipt\WebSnip.Tests\WebSnip.Tests.csproj", "{E4E5171F-45EE-45EA-8F5D-E685A360804C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSnip.Tests", "WebSnip.Tests\WebSnip.Tests.csproj", "{E4E5171F-45EE-45EA-8F5D-E685A360804C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleProject", "SampleProject\SampleProject.csproj", "{3888F9AA-4585-4624-86BA-52E5D1FB1E17}"
 EndProject
