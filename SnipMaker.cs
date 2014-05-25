@@ -15,7 +15,7 @@
             ITransformWebContentToWebSnippets transformWebSnippet = null)
         {
             this.snipRequest = snipRequest ?? new WebSnippetRequest();
-            this.transformWebSnippet = transformWebSnippet ?? new TransformWebContentToWebSnippets();
+            this.transformWebSnippet = transformWebSnippet ?? null;
         }
 
         public void WithSnipRequest(IRequestWebSnippets requestWebSnippets)
@@ -35,7 +35,8 @@
             if (!uri.IsAbsoluteUri) uri = new Uri(BaseUri, uri);
 
             var webContent = snipRequest.GetContent(uri);
-            return transformWebSnippet.ToWebSnippet(uri, webContent);
+            var transform = transformWebSnippet ?? new TransformBuilder().Using(new TagSetFactory().GetFor(uri)).Build();
+            return transform.ToWebSnippet(uri, webContent);
         }
 
         public SnipMaker WithBaseUrl(Uri uri)
