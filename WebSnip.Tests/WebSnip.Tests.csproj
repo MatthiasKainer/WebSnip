@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,8 @@
   <ItemGroup>
     <Compile Include="DefaultTransformWebContentSpecs.cs" />
     <Compile Include="HtmlUtilsSpecs.cs" />
+    <Compile Include="HttpRouting\EvaluateUrlSpecs.cs" />
+    <Compile Include="HttpRouting\NoRouteFoundSpecs.cs" />
     <Compile Include="Renderer\ImageRendererSpecs.cs" />
     <Compile Include="Renderer\TextRendererSpecs.cs" />
     <Compile Include="SnipMakerSpecs.cs" />

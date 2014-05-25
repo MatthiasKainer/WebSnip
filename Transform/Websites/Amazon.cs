@@ -1,10 +1,16 @@
 namespace WebSnip.Transform.Websites
 {
+    using System;
     using HtmlUtils;
     using Render;
 
     public class Amazon : IAmAWebsite
     {
+        public bool OptimizedFor(Uri uri)
+        {
+            return uri.Host.Contains("amazon.");
+        }
+
         public RenderSet Get()
         {
             var dict = new RenderSet

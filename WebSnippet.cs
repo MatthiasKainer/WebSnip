@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Dynamic;
     using System.Linq;
     using Render;
     using Templating;
@@ -54,6 +55,17 @@
         public string ToHtml()
         {
             return Template.ApplyToTemplate(registedRenderers.ToArray()).ToHtml();
+        }
+
+        public dynamic ToRenderedParts()
+        {
+            dynamic item = new ExpandoObject();
+            foreach (var registedRenderer in registedRenderers)
+            {
+                ((IDictionary<string,object>)item).Add(registedRenderer.Name, registedRenderer.Render());
+            }
+
+            return item;
         }
 
         public string GetRenderedPartByName(string name)

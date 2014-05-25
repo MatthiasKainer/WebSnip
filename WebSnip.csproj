@@ -35,8 +35,14 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +52,12 @@
   <ItemGroup>
     <Compile Include="HtmlUtils\Html.cs" />
     <Compile Include="HtmlUtils\TagBuilder.cs" />
+    <Compile Include="HttpHandler.cs" />
+    <Compile Include="HttpRouting\EvaluateUrl.cs" />
+    <Compile Include="HttpRouting\ICanHandleThisRoute.cs" />
+    <Compile Include="HttpRouting\NoRouteFound.cs" />
     <Compile Include="IRequestWebSnippets.cs" />
+    <Compile Include="ISnipMaker.cs" />
     <Compile Include="NoBaseUrlProvidedButRelativeUrlRequestedException.cs" />
     <Compile Include="Render\Attribute.cs" />
     <Compile Include="Render\BaseRenderer.cs" />
@@ -64,15 +75,18 @@
     <Compile Include="Templating\ICanDoTemplatingForWebSnippets.cs" />
     <Compile Include="Transform\Factory.cs" />
     <Compile Include="Transform\DefaultTransformWebContent.cs" />
+    <Compile Include="Transform\ITagSetFactory.cs" />
     <Compile Include="Transform\ITransformWebContentForUrl.cs" />
     <Compile Include="Transform\ITransformWebContentToWebSnippets.cs" />
     <Compile Include="Transform\RenderSet.cs" />
+    <Compile Include="Transform\TagSetFactory.cs" />
     <Compile Include="Transform\TagSetFactoryFor.cs" />
     <Compile Include="Transform\TransformWebContentToWebSnippets.cs" />
     <Compile Include="Transform\TransformBuilder.cs" />
     <Compile Include="Transform\Websites\Amazon.cs" />
     <Compile Include="Transform\Websites\DefaultWebsite.cs" />
     <Compile Include="Transform\Websites\IAmAWebsite.cs" />
+    <Compile Include="Utils\Json\ISerializeToJson.cs" />
     <Compile Include="Utils\SyntaticSugar\Switch\Switch.cs" />
     <Compile Include="Utils\SyntaticSugar\Switch\SwitchExtensions.cs" />
     <Compile Include="WebSnippet.cs" />

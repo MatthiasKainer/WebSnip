@@ -1,10 +1,17 @@
 namespace WebSnip.Transform.Websites
 {
+    using System;
     using HtmlUtils;
     using Render;
+    using Attribute = Render.Attribute;
 
     public class DefaultWebsite : IAmAWebsite
     {
+        public bool OptimizedFor(Uri uri)
+        {
+            return true;
+        }
+
         public RenderSet Get()
         {
             var dict = new RenderSet

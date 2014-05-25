@@ -4,10 +4,10 @@
     using Request;
     using Transform;
 
-    public class SnipMaker
+    public class SnipMaker : ISnipMaker
     {
-        readonly IRequestWebSnippets snipRequest;
-        readonly ITransformWebContentToWebSnippets transformWebSnippet;
+        IRequestWebSnippets snipRequest;
+        ITransformWebContentToWebSnippets transformWebSnippet;
 
         protected Uri BaseUri { get; private set; }
 
@@ -16,6 +16,16 @@
         {
             this.snipRequest = snipRequest ?? new WebSnippetRequest();
             this.transformWebSnippet = transformWebSnippet ?? new TransformWebContentToWebSnippets();
+        }
+
+        public void WithSnipRequest(IRequestWebSnippets requestWebSnippets)
+        {
+            snipRequest = requestWebSnippets;
+        }
+
+        public void WithTransformSnippet(ITransformWebContentToWebSnippets transformWebContentToWebSnippets)
+        {
+            transformWebSnippet = transformWebContentToWebSnippets;
         }
 
         public WebSnippet GetSnippetFor(Uri uri)
