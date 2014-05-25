@@ -7,12 +7,36 @@ A small library that allows to load parts of websites to display a preview of it
 
     PM> Install-Package WebSnip
 
-## Quickstart
+## Quickstart in Razor
 
-    public string GetContent(Uri uri) {
-        return new SnipMaker()
-            .GetSnippetFor(uri)
-            .ToHtml();
+    @Html.Raw(new SnipMaker()
+            .GetSnippetFor("http://www.amazon.de/Salutoo-Skin-f%C3%BCr-Iphone-Metal/dp/B00APJA9UC/")
+            .ToHtml());
+
+## Quickstart in JSON
+
+Add the following handler registration to your web.config: 
+
+    <system.webServer>
+      <handlers>
+        <add name="WebSnip" path="websnip.axd" verb="GET" type="WebSnip.HttpHandler, WebSnip, Version=1.0.0.0, Culture=neutral" preCondition="integratedMode" />
+      </handlers>
+    </system.webServer>
+
+Now you can get a JSON result by calling the new endpoint: 
+
+> http://localhost:2822/websnip.axd/get?for=http://www.amazon.de/Salutoo-Skin-f%C3%BCr-Iphone-Metal/dp/B00APJA9UC/
+
+Will thus return the following JSON: 
+
+    {
+      "success": true,
+      "data": 
+      {
+        "Text": "Salutoo Skin für Iphone 5 - Metal: Amazon.de: Elektronik",
+        "Image": "<img src=\"http://g-ecx.images-amazon.com/images/G/03/gno/sprites/global-sprite-v1._V339352741_.png\" alt=\"no alternate text provided\" title=\"no alternate text provided\" class=\"websnippets-image\" />",
+        "Attribute": "Salutoo Skin für Iphone 5 - Metal: Amazon.de: Elektronik"
+      }
     }
 
 ## Usage
