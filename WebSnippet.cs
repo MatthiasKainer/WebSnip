@@ -71,8 +71,8 @@
         public string GetRenderedPartByName(string name)
         {
             if (name == null) throw new ArgumentNullException("name");
-            var renderer = registedRenderers.FirstOrDefault(_ => _.Name == name);
-            return renderer == null ? null : renderer.Render();
+            var renderer = registedRenderers.Where(_ => _.Name == name).Select(_ => _.Render()).FirstOrDefault(_ => _ != null);
+            return renderer;
         }
     }
 }
